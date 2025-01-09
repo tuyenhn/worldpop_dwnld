@@ -1,8 +1,10 @@
+library(fs)
 library(sf)
 library(stars)
 library(units)
 library(furrr)
 library(future)
+library(purrr)
 
 plan(multicore, workers = 7)
 
