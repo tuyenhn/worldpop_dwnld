@@ -4,7 +4,7 @@ library(stars)
 library(units)
 library(furrr)
 library(future)
-library(purrr)
+library(tidyverse)
 
 plan(multicore, workers = 7)
 
@@ -54,7 +54,7 @@ processor <- function(ppp_rast, shp_file) {
   ppp_sf <- ppp_rast %>%
     st_as_sf()
 
-  weighted_ppp_df <- future_map(1:nrow(shp_file), \(p_idx){
+  future_map(1:nrow(shp_file), \(p_idx){
     # get current province shape
     curr_p_shp <- shp_file[p_idx, ]
 
